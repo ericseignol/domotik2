@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<<<<<<< Updated upstream
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contrôle de température</title>
@@ -33,5 +34,152 @@
     <script src="raphael.min.js"></script> <!-- Bibliothèque Raphael pour les jauges -->
     <script src="justgage.min.js"></script> <!-- Bibliothèque JustGage pour les jauges -->
     <script src="script.js"></script> <!-- Fichier JavaScript pour les fonctionnalités -->
+=======
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contrôle de température</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="/StyleDomotik.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.3.0/raphael.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/toorshia/justgage@1.4.0/dist/justgage.min.js"></script> <!-- Ajout de la bibliothèque JustGage -->
+</head>
+<body>
+<div class="container">
+<h1 class="text-center">Contrôle de température</h1>
+<div class="row">
+<div class="col-md-6">
+<div class="gauge">
+<label for="temperatureExt">Température extérieure:</label>
+<div id="gaugeExt" class="gauge"></div> <!-- Jauge pour la température extérieure -->
+<div id="gaugeExtValue">0 °C</div> <!-- Valeur numérique de la température extérieure -->
+</div>
+</div>
+<div class="col-md-6">
+<div class="gauge">
+<label for="temperatureEntr">Température insuflée:</label>
+<div id="gaugeInsu" class="gauge"></div> <!-- Jauge pour la température insufflée -->
+<div id="gaugeInsuValue">0 °C</div> <!-- Valeur numérique de la température insufflée -->
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6">
+<div class="gauge">
+<label for="temperatureInt">Température intérieure:</label>
+<div id="gaugeInt" class="gauge"></div> <!-- Jauge pour la température intérieure -->
+<div id="gaugeIntValue">0 °C</div> <!-- Valeur numérique de la température intérieure -->
+</div>
+</div>
+<div class="col-md-6">
+<div class="gauge">
+<label for="temperatureAsp">Température aspirée:</label>
+<div id="gaugeAsp" class="gauge"></div> <!-- Jauge pour la température aspirée -->
+<div id="gaugeAspValue">0 °C</div> <!-- Valeur numérique de la température aspirée -->
+</div>
+</div>
+</div>
+<div class="row justify-content-center">
+<div class="col-md-4 text-center">
+<button id="toggleButton">Activer / Désactiver</button>
+</div>
+</div>
+</div>
+<div class="status-indicators">
+<h2>Statuts :</h2>
+<div id="status-regime">
+<h3>Statut Régime :</h3>
+<p id="status-regime-value">En attente de données...</p>
+</div>
+<div id="status-recyclage">
+<h3>Statut Recyclage :</h3>
+<p id="status-recyclage-value">En attente de données...</p>
+</div>
+<div id="status-prechauffage">
+<h3>Statut Préchauffage :</h3>
+<p id="status-prechauffage-value">En attente de données...</p>
+</div>
+<div id="status-bypass">
+<h3>Statut Bypass :</h3>
+<p id="status-bypass-value">En attente de données...</p>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/justgage@1.4.0"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    var gaugeExt = new JustGage({
+        id: "gaugeExt",
+        value: 0,
+        min: -10,
+        max: 45,
+        title: "Température extérieure",
+        label: "°C"
+    });
+
+    var gaugeInsu = new JustGage({
+        id: "gaugeInsu",
+        value: 0,
+        min: 0,
+        max: 100,
+        title: "Température insuflée",
+        label: "°C"
+    });
+
+    var gaugeInt = new JustGage({
+        id: "gaugeInt",
+        value: 0,
+        min: 0,
+        max: 100,
+        title: "Température intérieure",
+        label: "°C"
+    });
+
+    var gaugeAsp = new JustGage({
+        id: "gaugeAsp",
+        value: 0,
+        min: 0,
+        max: 100,
+        title: "Température aspirée",
+        label: "°C"
+    });
+
+    function fetchDataAndUpdateGauges() {
+        $.get("/getTemperatureData", function(data) {
+            updateTemperatureGauges(data.temperatureExt, data.temperatureInt, data.temperatureEntr, data.temperatureAsp);
+        });
+    }
+
+    fetchDataAndUpdateGauges(); // Appel initial pour obtenir les données de température
+    setInterval(fetchDataAndUpdateGauges, 5000); // Actualisation périodique des données de température
+
+    function fetchStatusAndUpdateIndicators() {
+        $.get("/handleStatusData", function(statusData) {
+            updateStatusIndicators(statusData.statusReg, statusData.statusRecy, statusData.statusPrech, statusData.statusBypass);
+        });
+    }
+
+    fetchStatusAndUpdateIndicators(); // Appel initial pour obtenir les données de statut
+    setInterval(fetchStatusAndUpdateIndicators, 5000); // Actualisation périodique des données de statut
+});
+
+function updateTemperatureGauges(temperatureExt, temperatureInt, temperatureEntr, temperatureAsp) {
+    document.getElementById('gaugeExtValue').innerText = temperatureExt.toFixed(2) + ' °C';
+    document.getElementById('gaugeIntValue').innerText = temperatureInt.toFixed(2) + ' °C';
+    document.getElementById('gaugeInsuValue').innerText = temperatureEntr.toFixed(2) + ' °C';
+    document.getElementById('gaugeAspValue').innerText = temperatureAsp.toFixed(2) + ' °C';
+}
+
+function updateStatusIndicators(statusReg, statusRecy, statusPrech, statusBypass) {
+    document.getElementById('status-regime-value').innerText = statusReg;
+    document.getElementById('status-recyclage-value').innerText = statusRecy;
+    document.getElementById('status-prechauffage-value').innerText = statusPrech;
+    document.getElementById('status-bypass-value').innerText = statusBypass;
+}
+
+const toggleButton = document.getElementById('toggleButton');
+toggleButton.addEventListener('click', () => { console.log('Bouton cliqué !'); });
+
+</script>
+>>>>>>> Stashed changes
 </body>
 </html>
