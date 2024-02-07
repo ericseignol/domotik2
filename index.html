@@ -8,13 +8,33 @@
     <link rel="stylesheet" href="styles.css"> <!-- Fichier CSS externe pour le style -->
 </head>
 <body>
-    <div class="container">
-        <h1 class="text-center">Contrôle de température</h1>
-        <!-- Jauge pour la température extérieure -->
+        <div class="container">
+         <!-- Jauge pour la température extérieure -->
         <div class="gauge">
             <label for="temperatureExt">Température extérieure:</label>
             <div id="gaugeExt" class="gauge"></div>
             <div id="gaugeExtValue">0 °C</div>
+        </div>
+       
+        <!-- Jauge pour la température intérieure -->
+        <div class="gauge">
+            <label for="temperatureInt">Température intérieure:</label>
+            <div id="gaugeInt" class="gauge"></div>
+            <div id="gaugeIntValueValue">0 °C</div>
+        </div>
+         
+        <!-- Jauge pour la température Insuflée -->
+        <div class="gauge">
+            <label for="temperatureEntr">Température insuflée:</label>
+            <div id="gaugeInsu" class="gauge"></div>
+            <div id="gaugeInsuValueValue">0 °C</div>
+        </div>
+      
+        <!-- Jauge pour la température aspirée -->
+        <div class="gauge">
+            <label for="temperatureAsp">Température Aspirée:</label>
+            <div id="gaugeAsp" class="gauge"></div>
+            <div id="gaugeAspValueValue">0 °C</div>
         </div>
         <!-- Autres jauges pour différentes températures -->
         <!-- Informations de statut -->
@@ -33,16 +53,8 @@
     </div>
     <script src="raphael.min.js"></script> <!-- Bibliothèque Raphael pour les jauges -->
     <script src="justgage.min.js"></script> <!-- Bibliothèque JustGage pour les jauges -->
-    <script src="script.js"></script> <!-- Fichier JavaScript pour les fonctionnalités -->
-=======
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contrôle de température</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="/StyleDomotik.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.3.0/raphael.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/toorshia/justgage@1.4.0/dist/justgage.min.js"></script> <!-- Ajout de la bibliothèque JustGage -->
-</head>
+    <script src="script.js"></script> <!-- Fichier JavaScript pour les fonctionnalités
+
 <body>
 <div class="container">
 <h1 class="text-center">Contrôle de température</h1>
