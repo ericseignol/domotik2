@@ -16,7 +16,7 @@ t<!DOCTYPE html>
         xhr.onreadystatechange = function() {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
-                    var temperature = parseFloat(xhr.responseText);
+                    var temperatureExt = parseFloat(xhr.responseText);
                     createJustGage(temperatureExt);
                 } else {
                     console.error('Erreur lors de la récupération de la température : ' + xhr.status);
@@ -27,7 +27,7 @@ t<!DOCTYPE html>
         xhr.send();
 
       
-        function createJustGage(temperature) {
+        function createJustGage(temperatureExt) {
             var g = new JustGage({
                 id: "gauge",
                 value: temperatureExt,
