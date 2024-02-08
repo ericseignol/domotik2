@@ -5,6 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contrôle de température</title>
     <link rel="stylesheet" href="styles.css"> <!-- Fichier CSS externe pour le style -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.3.0/raphael.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/toorshia/justgage@1.4.0/dist/justgage.min.js"></script>
+</head>
+<body>
+    <h1>Températures</h1>
+    <div id="gauge" class="200x160px"></div>
+    <script>
+        // Effectuer une requête AJAX vers le fichier PHP pour récupérer la valeur de température
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    var temperature = parseFloat(xhr.responseText);
+                    createJustGage(temperature); // Appeler une fonction pour créer la jauge avec la température récupérée
+                } else {
+                    console.error('Erreur lors de la récupération de la température : ' + xhr.status);
+                }
+            }
+        };
+        xhr.open('GET', 'traitement.php', true);
+        xhr.send();
+
+        // Fonction pour créer la jauge JustGage avec la température récupérée
+        function createJustGage(temperature) {
+            var g = new JustGage({
+                id: "gauge",
+                value: temperature,
+                min: 0,
+                max: 45,
+                title: "Intérieur °C"
+            });
+        }
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contrôle de température</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Fichier CSS externe pour le style -->
  <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.3.0/raphael.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/toorshia/justgage@1.4.0/dist/justgage.min.js"></script> 
 
