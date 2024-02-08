@@ -13,15 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     fputcsv($file, $data);
     fclose($file);
 echo '<div id="gauge" class="200x160px"></div>';
-        echo '<script>';
-        echo 'var g = new JustGage({';
-        echo 'id: "gauge",';
-        echo "value: $temperature,";
-        echo 'min: 0,';
-        echo 'max: 45,';
-        echo 'title: "Intérieur °C"';
-        echo '});';
-        echo '</script>';
+        echo $temperatureExt;
 } else {
     // Répondre avec un message d'erreur si aucune donnée n'a été reçue
     http_response_code(400);
