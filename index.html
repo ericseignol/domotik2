@@ -11,14 +11,13 @@
 <body>
     <h1>Températures</h1>
     <div id="gauge" class="200x160px"></div>
-    <script>
-        // Effectuer une requête AJAX vers le fichier PHP pour récupérer la valeur de température
+    <script>       
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function() {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
                     var temperature = parseFloat(xhr.responseText);
-                    createJustGage(temperature); // Appeler une fonction pour créer la jauge avec la température récupérée
+                    createJustGage(temperature);
                 } else {
                     console.error('Erreur lors de la récupération de la température : ' + xhr.status);
                 }
@@ -27,7 +26,7 @@
         xhr.open('GET', 'traitement.php', true);
         xhr.send();
 
-        // Fonction pour créer la jauge JustGage avec la température récupérée
+      
         function createJustGage(temperature) {
             var g = new JustGage({
                 id: "gauge",
