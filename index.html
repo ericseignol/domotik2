@@ -9,14 +9,17 @@
    <script src="https://github.com/ericseignol/domotik2/blob/main/justgage.js"></script>
 </head>
 <body>
-    <div class="container">
-        <!-- Jauge pour la température extérieure -->
+          <!-- Jauge pour la température extérieure -->
             <div id="gauge" class="200x160px"></div>
-        <div class="gauge">
-            <label for="temperatureExt">Température extérieure:</label>
-            <div id="gaugeExt" class="gauge"></div>
-            <div id="gaugeExtValue">0 °C</div>
-        </div>
+           <script>
+      var g = new JustGage({
+        id: "gauge",
+        value: 67,
+        min: 0,
+        max: 100,
+        title: "Visitors"
+      });
+    </script>
        
                <!-- Informations de statut -->
         <div class="status-indicators">
