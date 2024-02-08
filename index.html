@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+t<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -17,7 +17,7 @@
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
                     var temperature = parseFloat(xhr.responseText);
-                    createJustGage(temperature);
+                    createJustGage(temperatureExt);
                 } else {
                     console.error('Erreur lors de la récupération de la température : ' + xhr.status);
                 }
@@ -30,8 +30,8 @@
         function createJustGage(temperature) {
             var g = new JustGage({
                 id: "gauge",
-                value: temperature,
-                min: 0,
+                value: temperatureExt,
+                min: -10,
                 max: 45,
                 title: "Intérieur °C"
             });
