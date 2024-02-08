@@ -11,52 +11,21 @@
 <body>
     <div class="container">
         <!-- Jauge pour la température extérieure -->
+            <div id="gauge" class="200x160px"></div>
         <div class="gauge">
             <label for="temperatureExt">Température extérieure:</label>
             <div id="gaugeExt" class="gauge"></div>
             <div id="gaugeExtValue">0 °C</div>
         </div>
        
-        <!-- Jauge pour la température intérieure -->
-        <div class="gauge">
-            <label for="temperatureInt">Température intérieure:</label>
-            <div id="gaugeInt" class="gauge"></div>
-            <div id="gaugeIntValue">0 °C</div>
-        </div>
-         
-        <!-- Jauge pour la température Insuflée -->
-        <div class="gauge">
-            <label for="temperatureEntr">Température insuflée:</label>
-            <div id="gaugeInsu" class="gauge"></div>
-            <div id="gaugeInsuValue">0 °C</div>
-        </div>
-      
-        <!-- Jauge pour la température aspirée -->
-        <div class="gauge">
-            <label for="temperatureAsp">Température Aspirée:</label>
-            <div id="gaugeAsp" class="gauge"></div>
-            <div id="gaugeAspValue">0 °C</div>
-        </div>
-        
-        <!-- Informations de statut -->
+               <!-- Informations de statut -->
         <div class="status-indicators">
             <h2>Statuts :</h2>
             <div id="status-regime">
                 <h3>Statut Régime :</h3>
                 <p id="status-regime-value">En attente de données...</p>
             </div>
-            <div id="status-recyclage">
-                <h3>Statut Recyclage :</h3>
-                <p id="status-recyclage-value">En attente de données...</p>
-            </div>
-            <div id="status-prechauffage">
-                <h3>Statut Préchauffage :</h3>
-                <p id="status-prechauffage-value">En attente de données...</p>
-            </div>
-            <div id="status-bypass">
-                <h3>Statut Bypass :</h3>
-                <p id="status-bypass-value">En attente de données...</p>
-            </div>
+        
         </div>
     </div>
     <script src="script.js"></script> <!-- Fichier JavaScript pour les fonctionnalités -->  
