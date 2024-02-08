@@ -2,13 +2,13 @@
 // Vérifier si des données ont été envoyées
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupérer les valeurs des champs du formulaire
-    $temperature = $_POST["temperature"];
-    $humidite = $_POST["humidite"];
+    $temperatureExt = $_POST["temperatureExt"];
+    $humiditeExt = $_POST["humiditeExt"];
 
     // Vérifier si les données sont valides (vous pouvez ajouter des validations supplémentaires si nécessaire)
 
     // Stocker les données dans un fichier CSV (par exemple)
-    $data = array($temperature, $humidite);
+    $data = array($temperatureExt, $humiditeExt);
     $file = fopen("data.csv", "a");
     fputcsv($file, $data);
     fclose($file);
